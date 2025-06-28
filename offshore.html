@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Ganti Judul Sesuai Layanan -->
+    <title>Offshore Plant Construction - Layanan Kami</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- AOS (Animate on Scroll) Library for animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom Stylesheet -->
+    <link href="style.css" rel="stylesheet">
+
+</head>
+<body class="bg-slate-50 text-slate-700">
+
+    <!-- =========== Header / Navbar =========== -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-3 z-50">
+                <img src="assets/PTMpng.png" alt="Logo Perusahaan" class="h-10 w-10 rounded-full">
+                <span id="company-name-text" class="text-base md:text-xl font-bold text-white transition-colors duration-300">PT. PUTRA TUNGGAL MANDIRITAMA</span>
+            </a>
+            <div class="flex items-center">
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="tentang-kami.html" class="desktop-nav-link text-white hover:text-teal-400 font-medium transition-colors duration-300">Tentang Kami</a>
+                    <!-- Tandai "Layanan" sebagai aktif -->
+                    <a href="index.html#services" class="desktop-nav-link text-teal-400 font-semibold transition-colors duration-300">Layanan</a>
+                    <a href="index.html#news" class="desktop-nav-link text-white hover:text-teal-400 font-medium transition-colors duration-300">Berita</a>
+                    <a href="index.html#contact" class="desktop-nav-link text-white hover:text-teal-400 font-medium transition-colors duration-300">Kontak</a>
+                </div>
+                <div class="md:hidden z-50 ml-6">
+                    <button id="mobile-menu-button" class="text-white focus:outline-none transition-colors duration-300">
+                        <svg id="menu-open-icon" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                        <svg id="menu-close-icon" class="w-7 h-7 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Menu Navigasi (Mobile) -->
+    <div id="mobile-menu" class="fixed inset-0 bg-white z-40 transform -translate-x-full transition-transform duration-300 ease-in-out md:hidden">
+        <div class="flex flex-col justify-center items-center h-full space-y-8">
+            <a href="tentang-kami.html" class="mobile-menu-link text-2xl text-slate-700 hover:text-teal-600">Tentang Kami</a>
+            <a href="index.html#services" class="mobile-menu-link text-2xl text-teal-600">Layanan</a>
+            <a href="index.html#news" class="mobile-menu-link text-2xl text-slate-700 hover:text-teal-600">Berita</a>
+            <a href="index.html#contact" class="mobile-menu-link text-2xl text-slate-700 hover:text-teal-600">Kontak</a>
+        </div>
+    </div>
+
+    <main>
+        <!-- =========== Hero Section for Service Page =========== -->
+        <section class="relative bg-slate-800 pt-40 pb-20 md:pt-48 md:pb-28">
+            <div class="absolute inset-0">
+                <!-- Ganti gambar latar sesuai layanan -->
+                <img src="https://placehold.co/1920x800/1e293b/475569?text=Gambar+Layanan" 
+                     alt="Layanan Latar" class="w-full h-full object-cover opacity-20">
+            </div>
+            <div class="relative container mx-auto px-6 text-center text-white" data-aos="fade-up">
+                <!-- Ganti Judul Sesuai Layanan -->
+                <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight">Offshore Plant Construction</h1>
+                <!-- Ganti deskripsi singkat -->
+                <p class="mt-4 text-lg text-slate-300 max-w-3xl mx-auto">Solusi komprehensif untuk konstruksi anjungan lepas pantai, dari pengerukan hingga instalasi struktur dan perpipaan.</p>
+            </div>
+        </section>
+
+        <!-- =========== Main Content Section Wrapper =========== -->
+        <section class="py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="max-w-5xl mx-auto">
+                    <div class="grid lg:grid-cols-2 gap-16 items-center">
+                        <!-- Kolom Gambar -->
+                        <div data-aos="fade-right">
+                             <!-- Ganti gambar detail layanan -->
+                            <img src="https://placehold.co/600x750/e2e8f0/334155?text=Foto+Proyek"
+                                 alt="Detail Layanan Offshore" class="rounded-xl shadow-2xl w-full">
+                        </div>
+                        <!-- Kolom Teks -->
+                        <div class="prose lg:prose-lg max-w-none text-slate-600" data-aos="fade-left" data-aos-delay="100">
+                             <!-- Ganti konten deskripsi layanan -->
+                            <h2 class="text-3xl font-extrabold text-slate-800 tracking-tight">Detail Layanan</h2>
+                            <p>Kami menyediakan layanan konstruksi lepas pantai yang mencakup seluruh siklus proyek. Dengan tim ahli dan peralatan canggih, kami memastikan setiap tahap proyek, mulai dari pekerjaan bawah air hingga instalasi di atas platform, berjalan dengan efisien dan sesuai standar keselamatan tertinggi.</p>
+                            
+                            <h3 class="text-slate-800 mt-8">Lingkup Pekerjaan:</h3>
+                            <ul>
+                                <li><strong>Trenching & Dredging:</strong> Persiapan dasar laut untuk pemasangan pipa dan struktur.</li>
+                                <li><strong>Pipelaying:</strong> Pemasangan pipa bawah laut dengan presisi tinggi menggunakan teknologi modern.</li>
+                                <li><strong>Installation Structure:</strong> Perakitan dan instalasi struktur jacket, topside, dan modul lainnya.</li>
+                                <li><strong>Piping Hook-up:</strong> Penyambungan sistem perpipaan di anjungan untuk memastikan aliran yang optimal dan aman.</li>
+                            </ul>
+                            <p>Komitmen kami adalah memberikan hasil yang andal dan tahan lama, mendukung operasi klien kami di lingkungan laut yang menantang.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400">
+        <!-- ... (Konten footer tetap sama) ... -->
+    </footer>
+
+    <!-- AOS (Animate on Scroll) Library Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Script untuk fungsionalitas kustom -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+             AOS.init({
+                duration: 700,
+                once: true,
+            });
+            // ... (logika header & menu mobile tetap sama) ...
+        });
+    </script>
+
+</body>
+</html>

@@ -16,45 +16,25 @@
     <!-- AOS (Animate on Scroll) Library for animations -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
-    <!-- Custom Styles for a more polished look -->
+    <!-- Custom Stylesheet -->
+    <link href="style.css" rel="stylesheet">
+
+    <!-- Custom Styles for this page -->
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-        html {
-            scroll-behavior: smooth;
-        }
-        .gradient-text {
-            background: linear-gradient(to right, #14b8a6, #0ea5e9);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .header-scrolled {
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
-            background-color: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(8px);
-        }
-        .body-no-scroll {
-            overflow: hidden;
-        }
-        /* Styling untuk Preloader */
         #preloader {
             transition: opacity 0.7s ease-out, visibility 0.7s ease-out;
         }
-        /* Styling untuk Konten Utama */
         #main-content {
             transition: opacity 0.7s ease-in;
         }
     </style>
+
 </head>
 <body class="bg-slate-50 text-slate-700">
 
     <!-- =========== Preloader / Splash Screen =========== -->
-    <div id="preloader" class="fixed inset-0 bg-slate-900 flex justify-center items-center z-[100]">
-        <!-- CORRECTED: Typo in image path -->
-        <img src="assets/PTMpng.png" alt="Logo Perusahaan Loading" class="w-96 h-96 animate-pulse">
+    <div id="preloader" class="fixed inset-0 bg-slate-900 flex justify-center items-center z-[100] px-8">
+        <img src="assets/PTMpng.png" alt="Logo Perusahaan Loading" class="w-48 h-48 md:w-96 md:h-96 animate-pulse">
     </div>
 
     <!-- Wrapper untuk Konten Utama, awalnya disembunyikan -->
@@ -62,82 +42,111 @@
         <!-- =========== Header / Navbar =========== -->
         <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
             <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-                <!-- Logo Perusahaan -->
-                <a href="#" class="flex items-center space-x-3 z-50">
+                <a href="#" class="flex-shrink-0 flex items-center space-x-3 z-50">
                     <img src="assets/PTMpng.png" alt="Logo Perusahaan" class="h-10 w-10 rounded-full">
-                    <span id="company-name-text" class="text-xl font-bold text-white transition-colors duration-300">PT. PUTRA TUNGGAL MANDIRITAMA</span>
+                    <span id="company-name-text" class="text-base md:text-xl font-bold text-white transition-colors duration-300">PT. PUTRA TUNGGAL MANDIRITAMA</span>
                 </a>
                 
-                <!-- Grup Navigasi dan Tombol Mobile -->
-                <div class="flex items-center">
-                    <!-- Menu Navigasi (Desktop) -->
-                    <div class="hidden md:flex items-center space-x-8">
+                <div class="hidden lg:flex flex-grow justify-center">
+                    <div class="flex items-center space-x-8">
                         <a href="tentang-kami.html" class="desktop-nav-link text-white hover:text-teal-400 font-medium transition-colors duration-300">Tentang Kami</a>
-                        <a href="#services" class="desktop-nav-link text-white hover:text-teal-400 font-medium transition-colors duration-300">Layanan</a>
+                        <div class="relative group">
+                            <button class="desktop-nav-link text-white hover:text-teal-400 font-medium transition-colors duration-300 flex items-center">
+                                Layanan
+                            </button>
+                            <div class="absolute hidden group-hover:block bg-white shadow-lg rounded-md mt-2 w-64 py-2 z-50">
+                                <a href="offshore.html" class="block px-4 py-2 text-slate-700 hover:bg-teal-50">Offshore Plant Construction</a>
+                                <a href="industrial-gas.html" class="block px-4 py-2 text-slate-700 hover:bg-teal-50">Industrial Gas Plant</a>
+                                <a href="oil-gas.html" class="block px-4 py-2 text-slate-700 hover:bg-teal-50">Oil & Gas</a>
+                                <a href="pipeline.html" class="block px-4 py-2 text-slate-700 hover:bg-teal-50">Pipeline</a>
+                                <a href="our-facility.html" class="block px-4 py-2 text-slate-700 hover:bg-teal-50">Our Facility</a>
+                            </div>
+                        </div>
                         <a href="#news" class="desktop-nav-link text-white hover:text-teal-400 font-medium transition-colors duration-300">Berita</a>
                         <a href="#contact" class="desktop-nav-link text-white hover:text-teal-400 font-medium transition-colors duration-300">Kontak</a>
                     </div>
-                
-                    <!-- Tombol Hamburger (Mobile) -->
-                    <div class="md:hidden z-50 ml-6">
-                        <button id="mobile-menu-button" class="text-white focus:outline-none transition-colors duration-300">
-                            <svg id="menu-open-icon" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-                            <svg id="menu-close-icon" class="w-7 h-7 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-                        </button>
-                    </div>
+                </div>
+            
+                <div class="lg:hidden z-50">
+                    <button id="mobile-menu-button" class="text-white focus:outline-none transition-colors duration-300">
+                        <svg id="menu-open-icon" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                        <svg id="menu-close-icon" class="w-7 h-7 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    </button>
                 </div>
             </nav>
         </header>
 
         <!-- Menu Navigasi (Mobile) -->
-        <div id="mobile-menu" class="fixed inset-0 bg-white z-40 transform -translate-x-full transition-transform duration-300 ease-in-out md:hidden">
-            <div class="flex flex-col justify-center items-center h-full space-y-8">
+        <div id="mobile-menu" class="fixed inset-0 bg-white z-40 transform -translate-x-full transition-transform duration-300 ease-in-out">
+            <div class="flex flex-col justify-center items-center h-full space-y-6">
                 <a href="tentang-kami.html" class="mobile-menu-link text-2xl text-slate-700 hover:text-teal-600">Tentang Kami</a>
-                <a href="#services" class="mobile-menu-link text-2xl text-slate-700 hover:text-teal-600">Layanan</a>
+                <div>
+                    <button id="mobile-services-toggle" class="mobile-menu-link text-2xl text-slate-700 hover:text-teal-600 flex items-center">
+                        Layanan
+                    </button>
+                    <div id="mobile-services-menu" class="hidden mt-4 space-y-4 text-center">
+                        <a href="offshore.html" class="block text-lg text-slate-600">Offshore Plant</a>
+                        <a href="industrial-gas.html" class="block text-lg text-slate-600">Industrial Gas Plant</a>
+                        <a href="oil-gas.html" class="block text-lg text-slate-600">Oil & Gas</a>
+                        <a href="pipeline.html" class="block text-lg text-slate-600">Pipeline</a>
+                        <a href="our-facility.html" class="block text-lg text-slate-600">Our Facility</a>
+                    </div>
+                </div>
                 <a href="#news" class="mobile-menu-link text-2xl text-slate-700 hover:text-teal-600">Berita</a>
                 <a href="#contact" class="mobile-menu-link text-2xl text-slate-700 hover:text-teal-600">Kontak</a>
-                <div class="pt-8">
-                    <a href="#contact" class="mobile-menu-link bg-teal-600 text-white font-semibold px-8 py-3 rounded-lg hover:bg-teal-700 transition duration-300">Hubungi Kami</a>
-                </div>
             </div>
         </div>
 
         <main>
-            <!-- =========== Hero Section (Diperbarui dengan rasio 16:9) =========== -->
-            <section id="hero" class="relative w-full" style="padding-top: 56.25%;"> <!-- 16:9 Aspect Ratio -->
-                <div class="absolute inset-0">
-                    <img src="assets/FOTO PTM.jpg" 
-                         onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/1e293b/475569?text=Gagal+Memuat+Gambar';"
-                         alt="Gambar Latar Hero" class="w-full h-full object-cover">
-                </div>
+            <section id="hero" class="relative w-full" style="padding-top: 56.25%;">
+                <div class="absolute inset-0"><img src="assets/FOTO PTM.jpg" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/1e293b/475569?text=Gagal+Memuat+Gambar';" alt="Gambar Latar Hero" class="w-full h-full object-cover"></div>
                 <div class="absolute inset-0 bg-slate-900 bg-opacity-60"></div>
                 <div class="absolute inset-0 flex items-center justify-center">
                     <div class="relative container mx-auto px-6 text-center text-white" data-aos="fade-up">
-                        <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-4"><span class="gradient-text">Commited, Innovative, Collaborative & Profesional</span></h1>
-                        <p class="text-lg md:text-xl text-slate-200 max-w-3xl mx-auto mb-10">Integrated Engineering, Procurement, Construction, Installation and Commissioning.</p>
+                        <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4"><span class="gradient-text">Commited, Innovative, Collaborative & Profesional</span></h1>
+                        <p class="text-base md:text-lg text-slate-200 max-w-3xl mx-auto mb-10 whitespace-nowrap">Integrated Engineering, Procurement, Construction, Installation and Commissioning.</p>
                         <a href="#services" class="bg-teal-600 text-white font-bold px-8 py-4 rounded-lg hover:bg-teal-700 transition-all duration-300 text-lg shadow-lg hover:shadow-teal-500/50 transform hover:scale-105">Jelajahi Solusi Kami</a>
                     </div>
                 </div>
             </section>
 
-            <!-- Bagian-bagian lainnya tetap sama -->
             <section id="trusted-by" class="py-16 bg-white">
-                <div class="container mx-auto px-6" data-aos="fade-up" data-aos-delay="200">
-                    <h4 class="text-center text-slate-500 font-semibold text-sm uppercase tracking-widest">Dipercaya oleh Perusahaan Terkemuka</h4>
-                    <div class="mt-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-x-8 gap-y-10 items-center">
-                        <img src="assets/PHM.png" alt="Logo Klien 1" class="mx-auto grayscale hover:grayscale-0 transition duration-300" />
-                        <img src="assets/EP.png" alt="Logo Klien 2" class="mx-auto grayscale hover:grayscale-0 transition duration-300" />
-                        <img src="assets/PHSS.png" alt="Logo Klien 3" class="mx-auto grayscale hover:grayscale-0 transition duration-300" />
-                        <img src="assets/Samator.jpg" alt="Logo Klien 4" class="mx-auto grayscale hover:grayscale-0 transition duration-300" />
-                        <img src="assets/Medco.png" alt="Logo Klien 5" class="mx-auto grayscale hover:grayscale-0 transition duration-300" />
-                        <img src="assets/PHKT.jpg" alt="Logo Klien 6" class="mx-auto grayscale hover:grayscale-0 transition duration-300" />
+                <div class="container mx-auto px-6">
+                    <h4 class="text-center text-slate-500 font-semibold text-sm uppercase tracking-widest" data-aos="fade-up">Dipercaya oleh Perusahaan Terkemuka</h4>
+                    <div class="scrolling-logos-container mt-12 w-full overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                        <div class="scrolling-logos flex w-max items-center">
+                            <img src="assets/PHM.png" alt="Logo Klien Pertamina Hulu Mahakam" class="client-logo mx-10 h-12 grayscale transition duration-300" />
+                            <img src="assets/EP.png" alt="Logo Klien Elnusa Petrofin" class="client-logo mx-10 h-12 grayscale transition duration-300" />
+                            <img src="assets/PHSS.png" alt="Logo Klien Pertamina Hulu Sanga Sanga" class="client-logo mx-10 h-12 grayscale transition duration-300" />
+                            <img src="assets/Samator.png" alt="Logo Klien Samator" class="client-logo mx-10 h-12 grayscale transition duration-300" />
+                            <img src="assets/Medco.png" alt="Logo Klien Medco Energi" class="client-logo mx-10 h-12 grayscale transition duration-300" />
+                            <img src="assets/PHKT.png" alt="Logo Klien Pertamina Hulu Kalimantan Timur" class="client-logo mx-10 h-12 grayscale transition duration-300" />
+                            <img src="assets/rdmp.png" alt="Logo Klien RDMP" class="client-logo mx-10 h-12 grayscale transition duration-300" />
+                            <img src="assets/badak.png" alt="Logo Klien Badak LNG" class="client-logo mx-10 h-12 grayscale transition duration-300" />
+                            <img src="assets/rekind.png" alt="Logo Klien Rekind" class="client-logo mx-10 h-12 grayscale transition duration-300" />
+                            <img src="assets/adhi.png" alt="Logo Klien Adhi Karya" class="client-logo mx-10 h-12 grayscale transition duration-300" />
+                            <img src="assets/wika.png" alt="Logo Klien Wijaya Karya" class="client-logo mx-10 h-12 grayscale transition duration-300" />
+                            
+                            <img src="assets/PHM.png" alt="Logo Klien Pertamina Hulu Mahakam" class="client-logo mx-10 h-12 grayscale transition duration-300" />
+                            <img src="assets/EP.png" alt="Logo Klien Elnusa Petrofin" class="client-logo mx-10 h-12 grayscale transition duration-300" />
+                            <img src="assets/PHSS.png" alt="Logo Klien Pertamina Hulu Sanga Sanga" class="client-logo mx-10 h-12 grayscale transition duration-300" />
+                            <img src="assets/Samator.png" alt="Logo Klien Samator" class="client-logo mx-10 h-12 grayscale transition duration-300" />
+                            <img src="assets/Medco.png" alt="Logo Klien Medco Energi" class="client-logo mx-10 h-12 grayscale transition duration-300" />
+                            <img src="assets/PHKT.png" alt="Logo Klien Pertamina Hulu Kalimantan Timur" class="client-logo mx-10 h-12 grayscale transition duration-300" />
+                            <img src="assets/rdmp.png" alt="Logo Klien RDMP" class="client-logo mx-10 h-12 grayscale transition duration-300" />
+                            <img src="assets/badak.png" alt="Logo Klien Badak LNG" class="client-logo mx-10 h-12 grayscale transition duration-300" />
+                            <img src="assets/rekind.png" alt="Logo Klien Rekind" class="client-logo mx-10 h-12 grayscale transition duration-300" />
+                            <img src="assets/adhi.png" alt="Logo Klien Adhi Karya" class="client-logo mx-10 h-12 grayscale transition duration-300" />
+                            <img src="assets/wika.png" alt="Logo Klien Wijaya Karya" class="client-logo mx-10 h-12 grayscale transition duration-300" />
+                        </div>
                     </div>
                 </div>
             </section>
+            
             <section id="about" class="py-20 md:py-24 bg-slate-50">
                 <div class="container mx-auto px-6">
                     <div class="grid lg:grid-cols-2 gap-16 items-center">
-                        <div data-aos="fade-right">
+                        <div data-aos="fade-right" class="text-center lg:text-left">
                             <div class="mb-8">
                                 <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">Kombinasi Sempurna antara Strategi dan Teknologi</h2>
                                 <p class="mt-4 text-lg text-slate-600">Kami bukan sekadar penyedia layanan, kami adalah partner pertumbuhan Anda. Dengan pengalaman bertahun-tahun, kami mendedikasikan diri untuk memahami esensi bisnis Anda dan merancang solusi yang berdampak nyata.</p>
@@ -145,6 +154,7 @@
                             <p class="text-slate-600">
                                Misi kami adalah memberdayakan bisnis dengan solusi yang efisien, andal, dan adaptif untuk menghadapi tantangan masa depan. Visi kami adalah menjadi katalisator utama dalam inovasi industri di kawasan ini.
                             </p>
+                             <a href="tentang-kami.html" class="mt-8 inline-block bg-teal-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-teal-700 transition-all duration-300">Pelajari Lebih Lanjut</a>
                         </div>
                         <div data-aos="fade-left" data-aos-delay="200">
                             <img src="https://placehold.co/600x450/e2e8f0/334155?text=Ruang+Kerja+Modern"
@@ -154,37 +164,53 @@
                     </div>
                 </div>
             </section>
+            
             <section id="services" class="py-20 md:py-24 bg-white">
                 <div class="container mx-auto px-6">
                     <div class="text-center mb-16" data-aos="fade-up">
                         <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">Layanan Profesional Kami</h2>
                         <p class="text-lg text-slate-600 mt-4 max-w-2xl mx-auto">Dirancang untuk mengakselerasi pertumbuhan dan efisiensi bisnis Anda.</p>
                     </div>
-                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <div class="bg-slate-50 p-8 rounded-xl border border-slate-200 hover:border-teal-500 hover:shadow-lg transition-all duration-300" data-aos="fade-up" data-aos-delay="100">
-                            <div class="bg-teal-100 text-teal-600 rounded-lg w-12 h-12 flex items-center justify-center mb-6">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
+                    <div class="flex flex-wrap justify-center gap-8">
+                        <a href="offshore.html" class="block bg-slate-50 p-8 rounded-xl border border-slate-200 hover:border-teal-500 hover:shadow-lg transition-all duration-300 text-center w-full md:w-[48%] lg:w-[31%]" data-aos="fade-up" data-aos-delay="100">
+                            <div class="bg-teal-100 text-teal-600 rounded-lg w-12 h-12 flex items-center justify-center mb-6 mx-auto">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2h1a2 2 0 002-2v-1a2 2 0 012-2h1.945M7.881 4.106C8.298 3.69 8.928 3.5 9.597 3.5h4.806c.669 0 1.3.19 1.716.506M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                             </div>
-                            <h3 class="text-xl font-bold text-slate-900 mb-3">Konsultasi Strategis</h3>
-                            <p class="text-slate-600">Analisis mendalam dan perencanaan strategis untuk mengarahkan bisnis Anda menuju tujuan yang tepat.</p>
-                        </div>
-                        <div class="bg-slate-50 p-8 rounded-xl border border-slate-200 hover:border-teal-500 hover:shadow-lg transition-all duration-300" data-aos="fade-up" data-aos-delay="200">
-                            <div class="bg-teal-100 text-teal-600 rounded-lg w-12 h-12 flex items-center justify-center mb-6">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
+                            <h3 class="text-xl font-bold text-slate-900 mb-3">Offshore Plant Construction</h3>
+                            <p class="text-slate-600 text-sm">Trenching, Dredging, Pipelaying, Installation Structure & Piping.</p>
+                        </a>
+                        <a href="industrial-gas.html" class="block bg-slate-50 p-8 rounded-xl border border-slate-200 hover:border-teal-500 hover:shadow-lg transition-all duration-300 text-center w-full md:w-[48%] lg:w-[31%]" data-aos="fade-up" data-aos-delay="200">
+                            <div class="bg-teal-100 text-teal-600 rounded-lg w-12 h-12 flex items-center justify-center mb-6 mx-auto">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
                             </div>
-                            <h3 class="text-xl font-bold text-slate-900 mb-3">Implementasi Teknologi</h3>
-                            <p class="text-slate-600">Penerapan teknologi terkini untuk meningkatkan efisiensi dan produktivitas operasional Anda.</p>
-                        </div>
-                        <div class="bg-slate-50 p-8 rounded-xl border border-slate-200 hover:border-teal-500 hover:shadow-lg transition-all duration-300" data-aos="fade-up" data-aos-delay="300">
-                            <div class="bg-teal-100 text-teal-600 rounded-lg w-12 h-12 flex items-center justify-center mb-6">
-                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                            <h3 class="text-xl font-bold text-slate-900 mb-3">Industrial Gas Plant</h3>
+                            <p class="text-slate-600 text-sm">OXY, N2, PETROCHEMICAL.</p>
+                        </a>
+                        <a href="oil-gas.html" class="block bg-slate-50 p-8 rounded-xl border border-slate-200 hover:border-teal-500 hover:shadow-lg transition-all duration-300 text-center w-full md:w-[48%] lg:w-[31%]" data-aos="fade-up" data-aos-delay="300">
+                            <div class="bg-teal-100 text-teal-600 rounded-lg w-12 h-12 flex items-center justify-center mb-6 mx-auto">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path fill-rule="evenodd" d="M18 8a6 6 0 01-7.743 5.743L10 14l-1 1-1 1H6v2H2v-4l4.257-4.257A6 6 0 1118 8zm-6-4a4 4 0 100 8 4 4 0 000-8z" clip-rule="evenodd" /></svg>
                             </div>
-                            <h3 class="text-xl font-bold text-slate-900 mb-3">Manajemen Proyek</h3>
-                            <p class="text-slate-600">Pengelolaan proyek dari awal hingga akhir dengan jaminan kualitas, waktu, dan biaya yang optimal.</p>
-                        </div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-3">Oil & Gas</h3>
+                            <p class="text-slate-600 text-sm">Mechanical, Steel Structure, Piping, Electrical & Instrument Civil Work.</p>
+                        </a>
+                        <a href="pipeline.html" class="block bg-slate-50 p-8 rounded-xl border border-slate-200 hover:border-teal-500 hover:shadow-lg transition-all duration-300 text-center w-full md:w-[48%] lg:w-[31%]" data-aos="fade-up" data-aos-delay="100">
+                            <div class="bg-teal-100 text-teal-600 rounded-lg w-12 h-12 flex items-center justify-center mb-6 mx-auto">
+                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-3">Pipeline</h3>
+                            <p class="text-slate-600 text-sm">Flare Stack Fabrication, Maintenance Wellhead, Connection Cold Cutting & Conductor.</p>
+                        </a>
+                        <a href="our-facility.html" class="block bg-slate-50 p-8 rounded-xl border border-slate-200 hover:border-teal-500 hover:shadow-lg transition-all duration-300 text-center w-full md:w-[48%] lg:w-[31%]" data-aos="fade-up" data-aos-delay="200">
+                            <div class="bg-teal-100 text-teal-600 rounded-lg w-12 h-12 flex items-center justify-center mb-6 mx-auto">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-3">Our Facility</h3>
+                            <p class="text-slate-600 text-sm">HANDIL 7 YARD & JETTY, Piling, Road Maintenance, Portacamp Fabrication, Jetty Fab and Install, Workshop Fabrication.</p>
+                        </a>
                     </div>
                 </div>
             </section>
+            
             <section id="news" class="py-20 md:py-24 bg-slate-50">
                 <div class="container mx-auto px-6">
                     <div class="text-center mb-16" data-aos="fade-up">
@@ -246,9 +272,12 @@
                             <span class="text-xl font-bold text-white">PT. PUTRA TUNGGAL MANDIRITAMA</span>
                         </a>
                         <p class="text-sm">
-                            <b>Head Office:</b> Komp. Ruko Grand Ciputra - Cira City -Blok SH38, Balikpapan<br>
-                            <b>Representative Office:</b> Jl. Darmawangsa Raya No. 08, Kebayoran Baru, Jakarta Selatan<br>
-                            <b>Workshop:</b> Jl. Darul Ilmi Handil 7, Muara Jawa, Kutai Kartanegara
+                            <b>Head Office:</b><br>
+                            Citra City Blok SH No. 38, Jl. MT. Haryono Damai Bahagia, Balikpapan, Kalimantan Timur<br><br>
+                            <b>Representative Office:</b><br>
+                            Jl. Darmawangsa Raya No. 08, Kebayoran Baru, Jakarta Selatan<br><br>
+                            <b>Workshop:</b><br>
+                            Jl. Darul Ilmi Handil 7, Muara Jawa, Kutai Kartanegara
                         </p>
                     </div>
                     <div class="lg:col-span-2">
@@ -272,16 +301,15 @@
                         <div class="flex space-x-4">
                             <a href="#" class="text-slate-400 hover:text-teal-400 transition duration-300"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg></a>
                             <a href="#" class="text-slate-400 hover:text-teal-400 transition duration-300"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.71v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" /></svg></a>
-                            <!-- UPDATED: Added LinkedIn URL -->
                             <a href="https://id.linkedin.com/company/recruitmentget" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-teal-400 transition duration-300"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.389 0-1.601 1.086-1.601 2.206v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.225-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.28 1.47h2.56v8.59H3.725v-8.59zM17.638 2H6.362A4.369 4.369 0 002 6.368v11.264A4.369 4.369 0 006.362 22h11.276A4.369 4.369 0 0022 17.632V6.368A4.369 4.369 0 0017.638 2z" clip-rule="evenodd" /></svg></a>
-                        </div>
                     </div>
                 </div>
-                <div class="mt-8 pt-8 border-t border-slate-800 text-center text-sm">
-                    <p>&copy;  Copyright PT Putra Tunggal Mandiritama 2025. All Right Reserved.</p>
-                </div>
             </div>
-        </footer>
+            <div class="mt-8 pt-8 border-t border-slate-800 text-center text-sm">
+                <p>&copy; Copyright PT Putra Tunggal Mandiritama 2025. All Right Reserved.</p>
+            </div>
+        </div>
+    </footer>
     </div>
 
     <!-- AOS (Animate on Scroll) Library Script -->
@@ -289,78 +317,121 @@
     
     <!-- Script untuk fungsionalitas kustom -->
     <script>
-        // --- Logika Preloader ---
-        const preloader = document.getElementById('preloader');
-        const mainContent = document.getElementById('main-content');
-        
-        window.addEventListener('load', () => {
-            // Atur waktu tunggu preloader sebelum menghilang (misal: 2000ms = 2 detik)
-            setTimeout(() => {
-                preloader.style.opacity = '0';
-                preloader.style.visibility = 'hidden';
-                
-                // Setelah transisi preloader selesai, tampilkan konten utama
-                preloader.addEventListener('transitionend', () => {
-                     mainContent.style.opacity = '1';
-                     
-                     // Inisialisasi AOS setelah konten utama terlihat
-                     AOS.init({
-                        duration: 700,
-                        once: true,
+        document.addEventListener('DOMContentLoaded', () => {
+             // --- Preloader Logic ---
+            const preloader = document.getElementById('preloader');
+            const mainContent = document.getElementById('main-content');
+            
+            window.addEventListener('load', () => {
+                setTimeout(() => {
+                    if(preloader) {
+                        preloader.style.opacity = '0';
+                        
+                        setTimeout(() => {
+                           preloader.style.visibility = 'hidden';
+                           if(mainContent) mainContent.style.opacity = '1';
+                           // Initialize AOS now that the content is visible
+                           AOS.init({
+                                duration: 700,
+                                once: true,
+                            });
+                        }, 700); // This must match the CSS transition duration
+                    }
+                }, 2000);
+            });
+
+            // --- Mobile Menu Logic ---
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenuButton) {
+                const menuOpenIcon = document.getElementById('menu-open-icon');
+                const menuCloseIcon = document.getElementById('menu-close-icon');
+                const body = document.body;
+                const toggleMenu = () => {
+                    mobileMenu.classList.toggle('-translate-x-full');
+                    menuOpenIcon.classList.toggle('hidden');
+                    menuCloseIcon.classList.toggle('hidden');
+                    body.classList.toggle('body-no-scroll');
+                };
+                mobileMenuButton.addEventListener('click', toggleMenu);
+                const mobileServicesToggle = document.getElementById('mobile-services-toggle');
+                const mobileServicesMenu = document.getElementById('mobile-services-menu');
+
+                if (mobileServicesToggle) {
+                    mobileServicesToggle.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        mobileServicesMenu.classList.toggle('hidden');
                     });
+                }
+
+                document.querySelectorAll('.mobile-menu-link').forEach(link => {
+                    if(link.id !== 'mobile-services-toggle') {
+                        link.addEventListener('click', () => {
+                            if (!mobileMenu.classList.contains('-translate-x-full')) {
+                                toggleMenu();
+                            }
+                        });
+                    }
                 });
+            }
+            
+            // --- Header Scroll Logic ---
+            const header = document.getElementById('header');
+            const companyNameText = document.getElementById('company-name-text');
+            const desktopNavLinks = document.querySelectorAll('.desktop-nav-link');
+            const mobileMenuBtn = document.getElementById('mobile-menu-button');
 
-            }, 2000);
-        });
+            window.addEventListener('scroll', () => {
+                const isScrolled = window.scrollY > 50;
+                header.classList.toggle('header-scrolled', isScrolled);
+                
+                if (companyNameText) {
+                    companyNameText.classList.toggle('text-white', !isScrolled);
+                    companyNameText.classList.toggle('text-slate-900', isScrolled);
+                }
+                
+                if (mobileMenuBtn) {
+                    mobileMenuBtn.classList.toggle('text-white', !isScrolled);
+                    mobileMenuBtn.classList.toggle('text-slate-800', isScrolled);
+                }
 
-        // --- Logika untuk Menu Mobile yang Lebih Baik ---
-        const body = document.body;
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const menuOpenIcon = document.getElementById('menu-open-icon');
-        const menuCloseIcon = document.getElementById('menu-close-icon');
-
-        const toggleMenu = () => {
-            mobileMenu.classList.toggle('-translate-x-full');
-            menuOpenIcon.classList.toggle('hidden');
-            menuCloseIcon.classList.toggle('hidden');
-            body.classList.toggle('body-no-scroll');
-        };
-
-        mobileMenuButton.addEventListener('click', toggleMenu);
-
-        const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
-        mobileMenuLinks.forEach(link => {
-            link.addEventListener('click', toggleMenu);
-        });
-
-        // --- Fungsionalitas header saat di-scroll ---
-        const header = document.getElementById('header');
-        const companyNameText = document.getElementById('company-name-text');
-        const desktopNavLinks = document.querySelectorAll('.desktop-nav-link');
-        const mobileMenuBtn = document.getElementById('mobile-menu-button');
-
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.classList.add('header-scrolled');
-                companyNameText.classList.remove('text-white');
-                companyNameText.classList.add('text-slate-900');
                 desktopNavLinks.forEach(link => {
-                    link.classList.remove('text-white', 'hover:text-teal-400');
-                    link.classList.add('text-slate-600', 'hover:text-teal-600');
+                    link.classList.toggle('text-white', !isScrolled);
+                    link.classList.toggle('text-slate-600', isScrolled);
+                    link.classList.toggle('hover:text-teal-400', !isScrolled);
+                    link.classList.toggle('hover:text-teal-600', isScrolled);
                 });
-                mobileMenuBtn.classList.remove('text-white');
-                mobileMenuBtn.classList.add('text-slate-800');
-            } else {
-                header.classList.remove('header-scrolled');
-                companyNameText.classList.remove('text-slate-900');
-                companyNameText.classList.add('text-white');
-                 desktopNavLinks.forEach(link => {
-                    link.classList.remove('text-slate-600', 'hover:text-teal-600');
-                    link.classList.add('text-white', 'hover:text-teal-400');
+            });
+
+            // --- Logo Intersection Observer ---
+            const logos = document.querySelectorAll('.client-logo');
+            
+            function checkLogoVisibility() {
+                if (!logos.length) return; // Stop if no logos
+                const center = window.innerWidth / 2;
+                let closestLogo = null;
+                let minDistance = Infinity;
+
+                logos.forEach(logo => {
+                    const rect = logo.getBoundingClientRect();
+                    const logoCenter = rect.left + rect.width / 2;
+                    const distance = Math.abs(center - logoCenter);
+
+                    if (distance < minDistance) {
+                        minDistance = distance;
+                        closestLogo = logo;
+                    }
                 });
-                mobileMenuBtn.classList.remove('text-slate-800');
-                mobileMenuBtn.classList.add('text-white');
+
+                logos.forEach(logo => {
+                    logo.classList.toggle('grayscale', logo !== closestLogo);
+                });
+
+                requestAnimationFrame(checkLogoVisibility);
+            }
+
+            if (logos.length > 0) {
+                 requestAnimationFrame(checkLogoVisibility);
             }
         });
     </script>

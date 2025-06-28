@@ -16,56 +16,16 @@
     <!-- AOS (Animate on Scroll) Library for animations -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
-    <!-- Custom Styles -->
+    <!-- Custom Stylesheet -->
+    <link href="style.css" rel="stylesheet">
+
+    <!-- UPDATED: Added styles for scroll-spy navigation -->
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-        html {
-            scroll-behavior: smooth;
-        }
-        .body-no-scroll {
-            overflow: hidden;
-        }
-        .header-scrolled {
-             box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
-            background-color: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(8px);
-        }
-        /* Styles for the final timeline layout */
-        .timeline-item-content {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem; /* 8px */
-        }
-        .timeline-dot {
-            width: 12px;
-            height: 12px;
-            background-color: #ffffff; /* White color */
-            border: 2px solid #cbd5e1; /* slate-300 for inactive */
-            border-radius: 50%;
-            transition: all 0.3s ease;
-            z-index: 10; /* Make sure dot is on top of the line */
-        }
-        .timeline-item.active .timeline-dot {
-            background-color: #0d9488; /* teal-600 for active */
-            border-color: #0d9488; /* teal-600 for active */
-        }
-        .timeline-item.active .timeline-period {
-            color: #0d9488; /* teal-600 */
-        }
-        #timeline-autoplay-progress {
-            height: 100%;
-            background-color: rgba(20, 184, 166, 0.4); /* teal-500 with opacity */
-        }
-        /* Konten timeline dengan transisi */
-        #timeline-content {
-            transition: opacity 0.5s ease-in-out;
+        .page-section {
+            scroll-margin-top: 130px; /* Offset for sticky headers */
         }
     </style>
+    
 </head>
 <body class="bg-slate-50 text-slate-700">
 
@@ -117,30 +77,50 @@
             </div>
         </section>
 
-        <!-- =========== Main Content Section =========== -->
-        <section class="py-24 bg-white">
+        <!-- =========== Sub-Navigation Bar =========== -->
+        <div id="sub-nav" class="sticky top-[76px] bg-white z-30 shadow-md">
+            <div class="container mx-auto px-6">
+                <div id="sub-nav-links" class="flex justify-center space-x-4 md:space-x-10 overflow-x-auto">
+                    <a href="#sekilas" class="sub-nav-link whitespace-nowrap py-4 px-2 border-b-2 border-transparent text-slate-600 hover:text-teal-600 font-semibold transition-all duration-300">Sekilas Perusahaan</a>
+                    <a href="#sejarah" class="sub-nav-link whitespace-nowrap py-4 px-2 border-b-2 border-transparent text-slate-600 hover:text-teal-600 font-semibold transition-all duration-300">Sejarah & Proyek</a>
+                    <a href="#visi-misi" class="sub-nav-link whitespace-nowrap py-4 px-2 border-b-2 border-transparent text-slate-600 hover:text-teal-600 font-semibold transition-all duration-300">Visi & Misi</a>
+                    <a href="#aset" class="sub-nav-link whitespace-nowrap py-4 px-2 border-b-2 border-transparent text-slate-600 hover:text-teal-600 font-semibold transition-all duration-300">Aset</a>
+                    <a href="#personel" class="sub-nav-link whitespace-nowrap py-4 px-2 border-b-2 border-transparent text-slate-600 hover:text-teal-600 font-semibold transition-all duration-300">Key Personel</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- =========== Main Content Section Wrapper =========== -->
+        <div class="bg-white">
             <div class="container mx-auto px-6">
                 <div class="max-w-5xl mx-auto">
-                    <div class="prose lg:prose-lg max-w-none text-slate-600 mb-16" data-aos="fade-up" data-aos-delay="100">
-                        <h2 class="text-slate-800">Visi & Misi</h2>
-                        <p><strong>Visi:</strong> Menjadi perusahaan EPCIC (Engineering, Procurement, Construction, Installation & Commissioning) terkemuka yang kompeten dan berdaya saing berdasarkan prinsip profesionalisme, integritas, dan keselamatan kerja.</p>
-                        <p><strong>Misi:</strong> Menyediakan produk dan layanan di bidang EPCIC yang terintegrasi dengan sistem manajemen mutu yang efektif untuk menciptakan kepuasan pelanggan dan pemangku kepentingan. Menjamin kesehatan dan keselamatan kerja serta berperan serta dalam pelestarian lingkungan. Memperkuat kompetensi sumber daya manusia yang terampil dan bermotivasi tinggi dengan menjunjung tinggi nilai-nilai Perusahaan. Menerapkan budaya belajar dan berinovasi secara berkelanjutan untuk memenuhi kompetensi nasional.</p>
-                        <hr class="my-12">
-                        <h2 class="text-slate-800">Sejarah Singkat</h2>
-                        <p>Didirikan pada tahun [Tahun Berdiri], PT. Putra Tunggal Mandiritama berawal dari sebuah visi sederhana: untuk menjadi partner yang dapat diandalkan dalam pembangunan infrastruktur nasional. Berbekal semangat, keahlian, dan tim yang solid, kami memulai perjalanan kami dengan beberapa proyek skala kecil. Seiring berjalannya waktu, kepercayaan dari klien terus bertambah, memungkinkan kami untuk berkembang dan menangani proyek-proyek yang lebih besar dan kompleks.</p>
-                    </div>
+                    
+                    <!-- 1. Sekilas Perusahaan -->
+                    <section id="sekilas" class="page-section py-24" data-aos="fade-up">
+                        <div class="grid lg:grid-cols-2 gap-12 items-center">
+                            <div class="prose lg:prose-lg max-w-none text-slate-600">
+                                <h2 class="text-3xl font-extrabold text-slate-800 tracking-tight">Sekilas Perusahaan</h2>
+                                <p>PT. Putra Tunggal Mandiritama adalah perusahaan yang bergerak di bidang jasa konstruksi yang didirikan pada tahun 2009 dengan akta pendirian No. 29, berkedudukan di Balikpapan - Kalimantan Timur. Pertumbuhan signifikan pertama terjadi pada tahun 2012, ketika PT. Putra Tunggal Mandiritama berekspansi menjadi kontraktor konstruksi dengan menangani berbagai proyek penting di Perusahaan Minyak dan Gas, seperti fabrikasi dan instalasi Perpipaan, struktur dan jalur aliran di Total E&P Indonesie sebagai pemenang proyek Konduktor dan Sambungan Sumur Handil di wilayah Mahakam.</p>
+                            </div>
+                            <div>
+                                <img src="assets/TentangKami/perusahaan.jpg"
+                                     onerror="this.onerror=null;this.src='https://placehold.co/600x450/e2e8f0/334155?text=Gagal+Memuat';"
+                                     alt="Foto Gedung Perusahaan" class="rounded-xl shadow-lg w-full">
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <hr class="border-slate-200">
 
-                    <!-- =========== TIMELINE SECTION START =========== -->
-                    <section id="project-history" class="py-16" data-aos="fade-up" data-aos-delay="200">
+                    <!-- 2. Sejarah & Proyek -->
+                    <section id="sejarah" class="page-section py-24" data-aos="fade-up">
                         <div class="text-center mb-16">
-                            <h2 class="text-3xl font-extrabold text-slate-800 tracking-tight">Perjalanan Proyek Kami</h2>
+                            <h2 class="text-3xl font-extrabold text-slate-800 tracking-tight">Sejarah & Proyek</h2>
                             <p class="mt-2 text-slate-600">Beberapa tonggak sejarah penting dalam perjalanan kami.</p>
                         </div>
                         
                         <div id="timeline-wrapper" class="w-full max-w-4xl mx-auto px-4 relative">
-                            <div id="timeline-nav" class="relative flex justify-between items-center">
-                                <!-- Items will be generated by JavaScript -->
-                            </div>
+                            <div id="timeline-nav" class="relative flex justify-between items-center"></div>
                             <div id="timeline-line-container" class="absolute top-1/2 left-0 w-full h-1 transform -translate-y-1/2 pointer-events-none">
                                 <div class="w-full h-0.5 bg-slate-200"></div>
                                 <div id="timeline-progress" class="absolute top-0 left-0 h-0.5 bg-teal-600 transition-all duration-300 ease-out"></div>
@@ -151,28 +131,82 @@
                         </div>
 
                         <div id="timeline-content" class="grid lg:grid-cols-2 gap-12 items-center min-h-[400px] mt-16">
-                            <div>
-                                <img id="timeline-image" src="" alt="Gambar Proyek" class="rounded-xl shadow-2xl w-full h-full object-cover">
-                            </div>
+                            <div><img id="timeline-image" src="" alt="Gambar Proyek" class="rounded-xl shadow-2xl w-full h-full object-cover"></div>
                             <div>
                                 <h3 id="timeline-title" class="text-2xl md:text-3xl font-bold text-slate-900 mb-4"></h3>
                                 <p id="timeline-description" class="text-slate-600"></p>
                             </div>
                         </div>
                     </section>
-                    <!-- =========== TIMELINE SECTION END =========== -->
 
-                    <div class="prose lg:prose-lg max-w-none text-slate-600 mt-16" data-aos="fade-up">
-                         <hr class="my-12">
-                        <h2 class="text-slate-800">Nilai-Nilai Kami</h2>
-                        <ul>
-                            <li><strong>Integritas:</strong> Menjunjung tinggi kejujuran, etika, dan transparansi dalam setiap tindakan.</li>
-                            <li><strong>Kualitas:</strong> Berkomitmen untuk memberikan hasil terbaik yang melampaui ekspektasi klien.</li>
-                            <li><strong>Keselamatan:</strong> Memprioritaskan kesehatan dan keselamatan kerja sebagai budaya utama.</li>
-                            <li><strong>Inovasi:</strong> Terus menerus mencari cara-cara baru yang lebih baik dan efisien untuk bekerja.</li>
-                            <li><strong>Kolaborasi:</strong> Bekerja sama sebagai satu tim yang solid untuk mencapai tujuan bersama.</li>
-                        </ul>
-                    </div>
+                    <hr class="border-slate-200">
+
+                    <!-- 3. Visi Misi -->
+                    <section id="visi-misi" class="page-section py-24" data-aos="fade-up">
+                        <div class="prose lg:prose-lg max-w-none text-slate-600">
+                             <h2 class="text-3xl font-extrabold text-slate-800 tracking-tight">Visi, Misi & Nilai</h2>
+                             <p><strong>Visi:</strong> Menjadi perusahaan EPCIC (Engineering, Procurement, Construction, Installation & Commissioning) terkemuka yang kompeten dan berdaya saing berdasarkan prinsip profesionalisme, integritas, dan keselamatan kerja.</p>
+                             <p><strong>Misi:</strong> Menyediakan produk dan layanan di bidang EPCIC yang terintegrasi dengan sistem manajemen mutu yang efektif untuk menciptakan kepuasan pelanggan dan pemangku kepentingan. Menjamin kesehatan dan keselamatan kerja serta berperan serta dalam pelestarian lingkungan. Memperkuat kompetensi sumber daya manusia yang terampil dan bermotivasi tinggi dengan menjunjung tinggi nilai-nilai Perusahaan. Menerapkan budaya belajar dan berinovasi secara berkelanjutan untuk memenuhi kompetensi nasional.</p>
+                             <h3 class="text-slate-800 mt-12">Nilai-Nilai Kami</h3>
+                             <ul>
+                                <li><strong>Integritas:</strong> Menjunjung tinggi kejujuran, etika, dan transparansi dalam setiap tindakan.</li>
+                                <li><strong>Kualitas:</strong> Berkomitmen untuk memberikan hasil terbaik yang melampaui ekspektasi klien.</li>
+                                <li><strong>Keselamatan:</strong> Memprioritaskan kesehatan dan keselamatan kerja sebagai budaya utama.</li>
+                                <li><strong>Inovasi:</strong> Terus menerus mencari cara-cara baru yang lebih baik dan efisien untuk bekerja.</li>
+                                <li><strong>Kolaborasi:</strong> Bekerja sama sebagai satu tim yang solid untuk mencapai tujuan bersama.</li>
+                            </ul>
+                        </div>
+                    </section>
+                    
+                     <hr class="border-slate-200">
+
+                    <!-- 4. Aset -->
+                    <section id="aset" class="page-section py-24" data-aos="fade-up">
+                        <div class="text-center mb-16">
+                            <h2 class="text-3xl font-extrabold text-slate-800 tracking-tight">Aset Kami</h2>
+                            <p class="mt-2 text-slate-600">Infrastruktur dan peralatan modern yang mendukung keunggulan operasional.</p>
+                        </div>
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+                            <img src="https://placehold.co/600x400/e2e8f0/334155?text=Aset+1" class="rounded-lg shadow-md aspect-video object-cover" alt="Aset 1">
+                            <img src="https://placehold.co/600x400/e2e8f0/334155?text=Aset+2" class="rounded-lg shadow-md aspect-video object-cover" alt="Aset 2">
+                            <img src="https://placehold.co/600x400/e2e8f0/334155?text=Aset+3" class="rounded-lg shadow-md aspect-video object-cover" alt="Aset 3">
+                            <img src="https://placehold.co/600x400/e2e8f0/334155?text=Aset+4" class="rounded-lg shadow-md aspect-video object-cover" alt="Aset 4">
+                            <img src="https://placehold.co/600x400/e2e8f0/334155?text=Aset+5" class="rounded-lg shadow-md aspect-video object-cover" alt="Aset 5">
+                            <img src="https://placehold.co/600x400/e2e8f0/334155?text=Aset+6" class="rounded-lg shadow-md aspect-video object-cover" alt="Aset 6">
+                        </div>
+                    </section>
+
+                     <hr class="border-slate-200">
+
+                    <!-- 5. Key Personel -->
+                    <section id="personel" class="page-section py-24" data-aos="fade-up">
+                         <div class="text-center mb-16">
+                            <h2 class="text-3xl font-extrabold text-slate-800 tracking-tight">Personel Kunci</h2>
+                            <p class="mt-2 text-slate-600">Tim profesional yang berdedikasi di balik kesuksesan kami.</p>
+                        </div>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                             <div class="text-center">
+                                <img src="assets/TentangKami/chr.png" class="rounded-full shadow-lg w-32 h-32 mx-auto mb-4 object-cover" alt="Foto Personel">
+                                <h4 class="font-bold text-slate-800">HARIYOTO A.D.</h4>
+                                <p class="text-sm text-slate-500">OPERATION MANAGER</p>
+                            </div>
+                             <div class="text-center">
+                                <img src="assets/TentangKami/bn.png" class="rounded-full shadow-lg w-32 h-32 mx-auto mb-4 object-cover" alt="Foto Personel">
+                                <h4 class="font-bold text-slate-800">BENNY DESRINALDI</h4>
+                                <p class="text-sm text-slate-500"> CHIEF FINANCIAL & HUMAN CAPITAL OFFICER </p>
+                            </div>
+                             <div class="text-center">
+                                <img src="assets/TentangKami/rvn.png" class="rounded-full shadow-lg w-32 h-32 mx-auto mb-4 object-cover" alt="Foto Personel">
+                                <h4 class="font-bold text-slate-800">ROVAN A. SYAHRIZA</h4>
+                                <p class="text-sm text-slate-500">CHIEF BUSINESS & OPERATION</p>
+                            </div>
+                            <div class="text-center">
+                                <img src="assets/TentangKami/ki.png" class="rounded-full shadow-lg w-32 h-32 mx-auto mb-4 object-cover" alt="Foto Personel">
+                                <h4 class="font-bold text-slate-800">AMIR YAHYA</h4>
+                                <p class="text-sm text-slate-500">OPERATION MANAGER SPECIALIST</p>
+                            </div>
+                        </div>
+                    </section>
                 </div>
             </div>
         </section>
@@ -195,9 +229,12 @@
                         <span class="text-xl font-bold text-white">PT. PUTRA TUNGGAL MANDIRITAMA</span>
                     </a>
                     <p class="text-sm">
-                        <b>Head Office:</b> Komp. Ruko Grand Ciputra - Cira City -Blok SH38, Balikpapan<br>
-                        <b>Representative Office:</b> Jl. Darmawangsa Raya No. 08, Kebayoran Baru, Jakarta Selatan<br>
-                        <b>Workshop:</b> Jl. Darul Ilmi Handil 7, Muara Jawa, Kutai Kartanegara
+                        <b>Head Office:</b><br>
+                        Citra City Blok SH No. 38, Jl. MT. Haryono Damai Bahagia, Balikpapan, Kalimantan Timur<br><br>
+                        <b>Representative Office:</b><br>
+                        Jl. Darmawangsa Raya No. 08, Kebayoran Baru, Jakarta Selatan<br><br>
+                        <b>Workshop:</b><br>
+                        Jl. Darul Ilmi Handil 7, Muara Jawa, Kutai Kartanegara
                     </p>
                 </div>
                 <div class="lg:col-span-2">
@@ -242,170 +279,186 @@
                 once: true,
             });
 
-            // Mobile Menu Logic
-            // ... (logika menu mobile tetap sama)
+            // --- Mobile Menu Logic ---
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenuButton) {
+                const menuOpenIcon = document.getElementById('menu-open-icon');
+                const menuCloseIcon = document.getElementById('menu-close-icon');
+                const body = document.body;
+                const toggleMenu = () => {
+                    mobileMenu.classList.toggle('-translate-x-full');
+                    menuOpenIcon.classList.toggle('hidden');
+                    menuCloseIcon.classList.toggle('hidden');
+                    body.classList.toggle('body-no-scroll');
+                };
+                mobileMenuButton.addEventListener('click', toggleMenu);
+                document.querySelectorAll('.mobile-menu-link').forEach(link => link.addEventListener('click', toggleMenu));
+            }
             
-             // Header Scroll Logic
+            // --- Header Scroll Logic ---
             const header = document.getElementById('header');
             const companyNameText = document.getElementById('company-name-text');
             const desktopNavLinks = document.querySelectorAll('.desktop-nav-link');
             const mobileMenuBtn = document.getElementById('mobile-menu-button');
 
             window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    header.classList.add('header-scrolled');
-                    companyNameText.classList.remove('text-white');
-                    companyNameText.classList.add('text-slate-900');
-                    desktopNavLinks.forEach(link => {
-                        if (!link.classList.contains('text-teal-600')) {
-                           link.classList.remove('text-white', 'hover:text-teal-400');
-                           link.classList.add('text-slate-600', 'hover:text-teal-600');
+                const isScrolled = window.scrollY > 50;
+                header.classList.toggle('header-scrolled', isScrolled);
+                if (companyNameText) {
+                    companyNameText.classList.toggle('text-white', !isScrolled);
+                    companyNameText.classList.toggle('text-slate-900', isScrolled);
+                }
+                if (mobileMenuBtn) {
+                    mobileMenuBtn.classList.toggle('text-white', !isScrolled);
+                    mobileMenuBtn.classList.toggle('text-slate-800', isScrolled);
+                }
+
+                desktopNavLinks.forEach(link => {
+                    const isActive = link.classList.contains('text-teal-400');
+                    if (!isActive) {
+                        link.classList.toggle('text-white', !isScrolled);
+                        link.classList.toggle('text-slate-600', isScrolled);
+                        link.classList.toggle('hover:text-teal-400', !isScrolled);
+                        link.classList.toggle('hover:text-teal-600', isScrolled);
+                    }
+                });
+            });
+
+
+            // --- Sub-Nav ScrollSpy Logic ---
+            const subNav = document.getElementById('sub-nav');
+            const subNavLinks = document.querySelectorAll('.sub-nav-link');
+            const sections = document.querySelectorAll('.page-section');
+
+            if (subNav && subNavLinks.length > 0 && sections.length > 0) {
+                const onScroll = () => {
+                    const subNavHeight = subNav.offsetHeight;
+                    const scrollPos = window.scrollY + subNavHeight + 76 + 50; // 76 is main header height, 50 is extra offset
+
+                    sections.forEach(section => {
+                        if (section.offsetTop <= scrollPos && (section.offsetTop + section.offsetHeight) > scrollPos) {
+                            subNavLinks.forEach(link => {
+                                link.classList.remove('active');
+                                if (section.getAttribute('id') === link.getAttribute('href').substring(1)) {
+                                    link.classList.add('active');
+                                }
+                            });
                         }
                     });
-                    mobileMenuBtn.classList.remove('text-white');
-                    mobileMenuBtn.classList.add('text-slate-800');
-                } else {
-                    header.classList.remove('header-scrolled');
-                    companyNameText.classList.remove('text-slate-900');
-                    companyNameText.classList.add('text-white');
-                    desktopNavLinks.forEach(link => {
-                         if (!link.classList.contains('text-teal-600')) {
-                            link.classList.remove('text-slate-600', 'hover:text-teal-600');
-                            link.classList.add('text-white', 'hover:text-teal-400');
-                         }
-                    });
-                    mobileMenuBtn.classList.remove('text-slate-800');
-                    mobileMenuBtn.classList.add('text-white');
+                };
+                window.addEventListener('scroll', onScroll);
+            }
+
+            // --- Timeline Logic ---
+            const timelineWrapper = document.getElementById('timeline-wrapper');
+            if (timelineWrapper) {
+                const timelineData = [
+                    { period: "2009-2012", title: "Awal Berdiri dan Proyek Pertama", description: "PT. Putra Tunggal Mandiritama didirikan pada tahun 2009. Pertumbuhan signifikan pertama terjadi pada tahun 2012 ketika kami berhasil memenangkan proyek Conductor and Handil Well Connection di wilayah Mahakam untuk Total E&P Indonesie.", image: "https://placehold.co/800x600/64748b/ffffff?text=Proyek+2009-2012" },
+                    { period: "2013-2016", title: "Ekspansi dan Pengakuan", description: "Memperluas jangkauan layanan ke berbagai proyek Oil and Gas lainnya, fokus pada fabrikasi dan instalasi perpipaan serta struktur. Membangun reputasi untuk kualitas dan ketepatan waktu.", image: "https://placehold.co/800x600/475569/ffffff?text=Proyek+2013-2016" },
+                    { period: "2017-2019", title: "Peningkatan Standar dan Kapasitas", description: "Berinvestasi pada sertifikasi sistem manajemen mutu dan keselamatan kerja (ISO) untuk memenuhi standar internasional, serta meningkatkan kapasitas workshop dan sumber daya manusia.", image: "https://placehold.co/800x600/334155/ffffff?text=Proyek+2017-2019" },
+                    { period: "2020-2022", title: "Proyek Strategis dan EPCIC", description: "Dipercaya untuk menangani proyek-proyek yang lebih kompleks dengan lingkup EPCIC (Engineering, Procurement, Construction, Installation & Commissioning), menunjukkan kapabilitas perusahaan secara menyeluruh.", image: "https://placehold.co/800x600/1e293b/ffffff?text=Proyek+2020-2022" },
+                    { period: "2023-Kini", title: "Inovasi Berkelanjutan", description: "Terus berinovasi dalam teknologi dan metode kerja untuk meningkatkan efisiensi dan mendukung proyek-proyek energi nasional, termasuk persiapan untuk transisi energi.", image: "https://placehold.co/800x600/0f172a/ffffff?text=Proyek+2023-Kini" }
+                ];
+
+                const navContainer = document.getElementById('timeline-nav');
+                const progressEl = document.getElementById('timeline-progress');
+                const autoplayProgressEl = document.getElementById('timeline-autoplay-progress');
+                const lineContainer = document.getElementById('timeline-line-container');
+                const timelineImage = document.getElementById('timeline-image');
+                const timelineTitle = document.getElementById('timeline-title');
+                const timelineDescription = document.getElementById('timeline-description');
+                const timelineContent = document.getElementById('timeline-content');
+                
+                let currentIndex = 0;
+                let animationFrameId;
+                let startTime;
+                const autoplayDuration = 8000;
+
+                function updateTimeline(index) {
+                    currentIndex = index;
+                    if(timelineContent) timelineContent.style.opacity = 0;
+                    setTimeout(() => {
+                        const data = timelineData[index];
+                        if (timelineImage) timelineImage.src = data.image;
+                        if (timelineTitle) timelineTitle.textContent = data.title;
+                        if (timelineDescription) timelineDescription.textContent = data.description;
+                        const items = navContainer.querySelectorAll('.timeline-item');
+                        items.forEach((item, i) => item.classList.toggle('active', i === index));
+                        const progressPercentage = (timelineData.length > 1) ? (index / (timelineData.length - 1)) * 100 : 0;
+                        if(progressEl) progressEl.style.width = `${progressPercentage}%`;
+                        if(timelineContent) timelineContent.style.opacity = 1;
+                    }, 300);
                 }
-            });
 
-
-            // --- REVAMPED Timeline Logic ---
-            const timelineData = [
-                { period: "2005-2010", title: "Proyek Infrastruktur Awal", description: "Pada periode ini, kami fokus pada pembangunan pondasi perusahaan dengan mengerjakan berbagai proyek infrastruktur dasar seperti jalan dan jembatan di Kalimantan Timur.", image: "https://placehold.co/800x600/64748b/ffffff?text=Proyek+2005-2010" },
-                { period: "2011-2015", title: "Ekspansi ke Sektor Pertambangan", description: "Melihat potensi besar di sektor pertambangan, kami melakukan ekspansi dengan menyediakan jasa penunjang tambang, termasuk persiapan lahan dan hauling.", image: "https://placehold.co/800x600/475569/ffffff?text=Proyek+2011-2015" },
-                { period: "2016-2018", title: "Peningkatan Kapasitas & Sertifikasi", description: "Kami berinvestasi besar pada armada alat berat dan mendapatkan sertifikasi ISO sebagai bukti komitmen kami terhadap standar kualitas dan keselamatan internasional.", image: "https://placehold.co/800x600/334155/ffffff?text=Proyek+2016-2018" },
-                { period: "2019-2021", title: "Proyek Skala Nasional", description: "Kepercayaan klien membawa kami untuk mengerjakan proyek strategis nasional, termasuk pembangunan fasilitas pendukung di kawasan industri dan partisipasi dalam proyek IKN.", image: "https://placehold.co/800x600/1e293b/ffffff?text=Proyek+2019-2021" },
-                { period: "2022-Kini", title: "Inovasi dan Diversifikasi Usaha", description: "Memasuki era baru, kami terus berinovasi dengan teknologi konstruksi modern dan melakukan diversifikasi usaha ke sektor energi terbarukan.", image: "https://placehold.co/800x600/0f172a/ffffff?text=Proyek+2022-Kini" }
-            ];
-
-            const navContainer = document.getElementById('timeline-nav');
-            const progressEl = document.getElementById('timeline-progress');
-            const autoplayProgressEl = document.getElementById('timeline-autoplay-progress');
-            const lineContainer = document.getElementById('timeline-line-container');
-            const timelineImage = document.getElementById('timeline-image');
-            const timelineTitle = document.getElementById('timeline-title');
-            const timelineDescription = document.getElementById('timeline-description');
-            const timelineContent = document.getElementById('timeline-content');
-            
-            let currentIndex = 0;
-            let animationFrameId;
-            let startTime;
-            const autoplayDuration = 8000;
-
-            function updateTimeline(index) {
-                currentIndex = index;
-                timelineContent.style.opacity = 0;
-
-                setTimeout(() => {
-                    const data = timelineData[index];
-                    timelineImage.src = data.image;
-                    timelineTitle.textContent = data.title;
-                    timelineDescription.textContent = data.description;
+                function startAutoplay(startTimestamp) {
+                    startTime = startTimestamp;
+                    if(animationFrameId) cancelAnimationFrame(animationFrameId);
                     
+                    function animate(currentTime) {
+                        const elapsedTime = currentTime - startTime;
+                        const progress = Math.min(elapsedTime / autoplayDuration, 1);
+                        
+                        if (currentIndex === timelineData.length - 1) {
+                            if(autoplayProgressEl) autoplayProgressEl.style.width = `100%`;
+                            cancelAnimationFrame(animationFrameId);
+                            return;
+                        }
+                        
+                        const segmentWidth = 100 / (timelineData.length - 1);
+                        const startWidth = currentIndex * segmentWidth;
+                        const additionalWidth = segmentWidth * progress;
+                        if(autoplayProgressEl) autoplayProgressEl.style.width = `${startWidth + additionalWidth}%`;
+                    
+                        if (progress < 1) {
+                            animationFrameId = requestAnimationFrame(animate);
+                        } else {
+                            updateTimeline(currentIndex + 1);
+                            startAutoplay(performance.now());
+                        }
+                    }
+                    animationFrameId = requestAnimationFrame(animate);
+                }
+
+                function handleItemClick(index) {
+                    updateTimeline(index);
+                    startAutoplay(performance.now());
+                }
+
+                function adjustTimelineLine() {
                     const items = navContainer.querySelectorAll('.timeline-item');
-                    items.forEach((item, i) => {
-                        item.classList.toggle('active', i === index);
-                    });
-                    
-                    const progressPercentage = (timelineData.length > 1) ? (index / (timelineData.length - 1)) * 100 : 0;
-                    progressEl.style.width = `${progressPercentage}%`;
-
-                    timelineContent.style.opacity = 1;
-                }, 300);
-            }
-
-            function startAutoplay(startTimestamp) {
-                startTime = startTimestamp;
-                if(animationFrameId) {
-                    cancelAnimationFrame(animationFrameId);
-                }
-                
-                function animate(currentTime) {
-                    const elapsedTime = currentTime - startTime;
-                    const progress = Math.min(elapsedTime / autoplayDuration, 1);
-                    
-                    if (currentIndex === timelineData.length - 1) {
-                         autoplayProgressEl.style.width = `100%`;
-                         cancelAnimationFrame(animationFrameId);
-                         return;
-                    }
-                    
-                    const segmentWidth = (timelineData.length > 1) ? 100 / (timelineData.length - 1) : 0;
-                    const startWidth = currentIndex * segmentWidth;
-                    const additionalWidth = segmentWidth * progress;
-                    const currentWidth = startWidth + additionalWidth;
-                    
-                    autoplayProgressEl.style.width = `${currentWidth}%`;
-                   
-                    if (progress < 1) {
-                        animationFrameId = requestAnimationFrame(animate);
-                    } else {
-                        const nextIndex = currentIndex + 1;
-                        updateTimeline(nextIndex);
-                        startAutoplay(performance.now());
+                    if (items.length > 1 && lineContainer) {
+                        const firstDot = items[0].querySelector('.timeline-dot');
+                        const lastDot = items[items.length - 1].querySelector('.timeline-dot');
+                        const firstDotRect = firstDot.getBoundingClientRect();
+                        const lastDotRect = lastDot.getBoundingClientRect();
+                        const containerRect = navContainer.getBoundingClientRect();
+                        const startX = firstDotRect.left - containerRect.left + (firstDot.offsetWidth / 2);
+                        const endX = lastDotRect.left - containerRect.left + (lastDot.offsetWidth / 2);
+                        const topY = firstDotRect.top - containerRect.top + (firstDot.offsetHeight / 2);
+                        
+                        lineContainer.style.top = `${topY}px`;
+                        lineContainer.style.left = `${startX}px`;
+                        lineContainer.style.width = `${endX - startX}px`;
                     }
                 }
-                animationFrameId = requestAnimationFrame(animate);
-            }
 
-            function handleItemClick(index) {
-                updateTimeline(index);
-                startAutoplay(performance.now());
-            }
-
-            function adjustTimelineLine() {
-                 const items = navContainer.querySelectorAll('.timeline-item');
-                if (items.length > 1 && lineContainer) {
-                    const firstDot = items[0].querySelector('.timeline-dot');
-                    const lastDot = items[items.length - 1].querySelector('.timeline-dot');
-
-                    const startX = firstDot.getBoundingClientRect().left - navContainer.getBoundingClientRect().left + (firstDot.offsetWidth / 2);
-                    const endX = lastDot.getBoundingClientRect().left - navContainer.getBoundingClientRect().left + (lastDot.offsetWidth / 2);
-                    
-                    // The line's vertical position should be center of the dots
-                    const topY = firstDot.getBoundingClientRect().top - navContainer.getBoundingClientRect().top + (firstDot.offsetHeight / 2);
-
-                    lineContainer.style.top = `${topY}px`;
-                    lineContainer.style.left = `${startX}px`;
-                    lineContainer.style.width = `${endX - startX}px`;
-                }
-            }
-
-            // Generate navigation items
-            timelineData.forEach((item, index) => {
-                const navItem = document.createElement('button');
-                navItem.className = 'timeline-item group flex-1';
-                navItem.onclick = () => handleItemClick(index);
-                
-                navItem.innerHTML = `
-                    <div class="flex items-center gap-2">
-                        <div class="timeline-dot"></div>
-                        <span class="timeline-period font-semibold text-slate-500 text-sm transition-colors duration-300 group-hover:text-teal-600">${item.period}</span>
-                    </div>
-                `;
-                navContainer.appendChild(navItem);
-            });
-            
-            // Initialize
-            if (timelineData.length > 0) {
-                updateTimeline(0);
-                startAutoplay(performance.now());
-                
-                requestAnimationFrame(() => {
-                    adjustTimelineLine();
+                // Generate timeline navigation items
+                timelineData.forEach((item, index) => {
+                    const navItem = document.createElement('button');
+                    navItem.className = 'timeline-item group flex-1';
+                    navItem.onclick = () => handleItemClick(index);
+                    navItem.innerHTML = `<div class="flex items-center gap-2"><div class="timeline-dot"></div><span class="timeline-period font-semibold text-slate-500 text-sm transition-colors duration-300 group-hover:text-teal-600">${item.period}</span></div>`;
+                    navContainer.appendChild(navItem);
                 });
-                window.addEventListener('resize', adjustTimelineLine);
+                
+                // Initialize Timeline
+                if (timelineData.length > 0) {
+                    updateTimeline(0);
+                    startAutoplay(performance.now());
+                    requestAnimationFrame(adjustTimelineLine);
+                    window.addEventListener('resize', adjustTimelineLine);
+                }
             }
         });
     </script>

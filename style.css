@@ -1,0 +1,105 @@
+body {
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden; /* Mencegah scroll horizontal */
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.gradient-text {
+    /* UPDATED: Changed gradient colors to green and blue */
+    background: linear-gradient(to right, #10B981, #3B82F6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.body-no-scroll {
+    overflow: hidden;
+}
+
+.header-scrolled {
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(8px);
+}
+
+/* Sub-navigation active state */
+.sub-nav-link.active {
+    color: #0d9488; /* teal-600 */
+    border-bottom-color: #0d9488;
+}
+
+/* Tab panel transition */
+.tab-panel {
+    transition: opacity 0.4s ease-in-out;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.timeline-dot {
+    width: 12px;
+    height: 12px;
+    background-color: #ffffff; /* White color */
+    border: 2px solid #cbd5e1; /* slate-300 for inactive */
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.timeline-item.active .timeline-dot {
+    background-color: #0d9488;
+    border-color: #0d9488;
+}
+
+.timeline-item.active .timeline-period {
+    color: #0d9488;
+}
+
+#timeline-autoplay-progress {
+    height: 100%;
+    background-color: rgba(20, 184, 166, 0.4);
+}
+
+#timeline-content {
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* Added for text justification */
+.prose p, .prose ul > li {
+    text-align: justify;
+}
+
+/* UPDATED: Widen the prose text blocks to feel less centered */
+.prose {
+    max-width: none;
+}
+
+/* Styles for Scrolling Logos */
+@keyframes scroll-left {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        /* Geser sejauh setengah dari total lebar (karena ada duplikasi) */
+        transform: translateX(-50%);
+    }
+}
+
+.scrolling-logos-container {
+    /* Efek fade di tepi kiri dan kanan */
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+}
+
+.scrolling-logos {
+    display: flex;
+    /* Durasi animasi bisa disesuaikan (misal: 40s) */
+    animation: scroll-left 40s linear infinite;
+}
