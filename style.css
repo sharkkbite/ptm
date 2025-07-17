@@ -10,7 +10,6 @@ html {
 }
 
 .gradient-text {
-    /* UPDATED: Changed gradient colors to green and blue */
     background: linear-gradient(to right, #10B981, #3B82F6);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -74,32 +73,4 @@ html {
 /* Added for text justification */
 .prose p, .prose ul > li {
     text-align: justify;
-}
-
-/* UPDATED: Widen the prose text blocks to feel less centered */
-.prose {
-    max-width: none;
-}
-
-/* Styles for Scrolling Logos */
-@keyframes scroll-left {
-    from {
-        transform: translateX(0);
-    }
-    to {
-        /* Geser sejauh setengah dari total lebar (karena ada duplikasi) */
-        transform: translateX(-50%);
-    }
-}
-
-.scrolling-logos-container {
-    /* Efek fade di tepi kiri dan kanan */
-    -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
-    mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
-}
-
-.scrolling-logos {
-    display: flex;
-    /* Durasi animasi bisa disesuaikan (misal: 40s) */
-    animation: scroll-left 40s linear infinite;
 }

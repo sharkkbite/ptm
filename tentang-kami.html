@@ -24,6 +24,15 @@
         .page-section {
             scroll-margin-top: 130px; /* Offset for sticky headers */
         }
+        @keyframes reveal-from-left {
+            from { transform: translateX(-101%); }
+            to { transform: translateX(0); }
+        }
+        .animate-reveal-text {
+            display: inline-block;
+            animation: reveal-from-left 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+            animation-delay: 0.5s;
+        }
     </style>
     
 </head>
@@ -32,32 +41,56 @@
     <!-- =========== Header / Navbar =========== -->
     <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="flex items-center space-x-3 z-50">
+            <a href="index.html" class="flex-shrink-0 flex items-center space-x-3 z-50">
                 <img src="assets/PTMpng.png" alt="Logo Perusahaan" class="h-10 w-10 rounded-full">
-                <span id="company-name-text" class="text-xl font-bold text-white transition-colors duration-300">PT. PUTRA TUNGGAL MANDIRITAMA</span>
+                <div class="overflow-hidden">
+                    <span id="company-name-text" class="animate-reveal-text text-xl font-bold text-white whitespace-nowrap transition-colors duration-300">PT. PUTRA TUNGGAL MANDIRITAMA</span>
+                </div>
             </a>
-            <div class="flex items-center">
-                <div class="hidden md:flex items-center space-x-8">
+            <div class="hidden lg:flex items-center ml-auto">
+                <div class="flex items-center space-x-8">
                     <a href="tentang-kami.html" class="desktop-nav-link text-teal-400 font-semibold transition-colors duration-300">Tentang Kami</a>
-                    <a href="index.html#services" class="desktop-nav-link text-white hover:text-teal-400 font-medium transition-colors duration-300">Layanan</a>
+                    <div class="relative group px-2 py-4">
+                        <button class="desktop-nav-link text-white hover:text-teal-400 font-medium transition-colors duration-300 flex items-center">
+                            Layanan
+                        </button>
+                        <div class="absolute hidden group-hover:block bg-white shadow-lg rounded-md mt-2 w-64 py-2 z-50 top-full left-1/2 -translate-x-1/2">
+                            <a href="offshore.html" class="block px-4 py-2 text-slate-700 hover:bg-teal-50">Offshore Plant Construction</a>
+                            <a href="industrial-gas.html" class="block px-4 py-2 text-slate-700 hover:bg-teal-50">Industrial Gas Plant</a>
+                            <a href="oil-gas.html" class="block px-4 py-2 text-slate-700 hover:bg-teal-50">Oil & Gas</a>
+                            <a href="pipeline.html" class="block px-4 py-2 text-slate-700 hover:bg-teal-50">Pipeline</a>
+                            <a href="our-facility.html" class="block px-4 py-2 text-slate-700 hover:bg-teal-50">Our Facility</a>
+                        </div>
+                    </div>
                     <a href="index.html#news" class="desktop-nav-link text-white hover:text-teal-400 font-medium transition-colors duration-300">Berita</a>
                     <a href="index.html#contact" class="desktop-nav-link text-white hover:text-teal-400 font-medium transition-colors duration-300">Kontak</a>
                 </div>
-                <div class="md:hidden z-50 ml-6">
-                    <button id="mobile-menu-button" class="text-white focus:outline-none transition-colors duration-300">
-                        <svg id="menu-open-icon" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-                        <svg id="menu-close-icon" class="w-7 h-7 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-                    </button>
-                </div>
+            </div>
+            <div class="lg:hidden z-50 ml-auto">
+                <button id="mobile-menu-button" class="text-white focus:outline-none transition-colors duration-300">
+                    <svg id="menu-open-icon" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    <svg id="menu-close-icon" class="w-7 h-7 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
             </div>
         </nav>
     </header>
 
     <!-- Menu Navigasi (Mobile) -->
-    <div id="mobile-menu" class="fixed inset-0 bg-white z-40 transform -translate-x-full transition-transform duration-300 ease-in-out md:hidden">
-        <div class="flex flex-col justify-center items-center h-full space-y-8">
+    <div id="mobile-menu" class="fixed inset-0 bg-white z-40 transform -translate-x-full transition-transform duration-300 ease-in-out">
+        <div class="flex flex-col justify-center items-center h-full space-y-6">
             <a href="tentang-kami.html" class="mobile-menu-link text-2xl text-teal-600">Tentang Kami</a>
-            <a href="index.html#services" class="mobile-menu-link text-2xl text-slate-700 hover:text-teal-600">Layanan</a>
+            <div>
+                <button id="mobile-services-toggle" class="mobile-menu-link text-2xl text-slate-700 hover:text-teal-600 flex items-center">
+                    Layanan
+                </button>
+                <div id="mobile-services-menu" class="hidden mt-4 space-y-4 text-center">
+                    <a href="offshore.html" class="block text-lg text-slate-600">Offshore Plant</a>
+                    <a href="industrial-gas.html" class="block text-lg text-slate-600">Industrial Gas Plant</a>
+                    <a href="oil-gas.html" class="block text-lg text-slate-600">Oil & Gas</a>
+                    <a href="pipeline.html" class="block text-lg text-slate-600">Pipeline</a>
+                    <a href="our-facility.html" class="block text-lg text-slate-600">Our Facility</a>
+                </div>
+            </div>
             <a href="index.html#news" class="mobile-menu-link text-2xl text-slate-700 hover:text-teal-600">Berita</a>
             <a href="index.html#contact" class="mobile-menu-link text-2xl text-slate-700 hover:text-teal-600">Kontak</a>
         </div>
@@ -80,12 +113,12 @@
         <!-- =========== Sub-Navigation Bar =========== -->
         <div id="sub-nav" class="sticky top-[76px] bg-white z-30 shadow-md">
             <div class="container mx-auto px-6">
-                <div id="sub-nav-links" class="flex justify-center space-x-4 md:space-x-10 overflow-x-auto">
-                    <a href="#sekilas" class="sub-nav-link whitespace-nowrap py-4 px-2 border-b-2 border-transparent text-slate-600 hover:text-teal-600 font-semibold transition-all duration-300">Sekilas Perusahaan</a>
-                    <a href="#sejarah" class="sub-nav-link whitespace-nowrap py-4 px-2 border-b-2 border-transparent text-slate-600 hover:text-teal-600 font-semibold transition-all duration-300">Sejarah & Proyek</a>
-                    <a href="#visi-misi" class="sub-nav-link whitespace-nowrap py-4 px-2 border-b-2 border-transparent text-slate-600 hover:text-teal-600 font-semibold transition-all duration-300">Visi & Misi</a>
-                    <a href="#aset" class="sub-nav-link whitespace-nowrap py-4 px-2 border-b-2 border-transparent text-slate-600 hover:text-teal-600 font-semibold transition-all duration-300">Aset</a>
-                    <a href="#personel" class="sub-nav-link whitespace-nowrap py-4 px-2 border-b-2 border-transparent text-slate-600 hover:text-teal-600 font-semibold transition-all duration-300">Key Personel</a>
+                <div id="sub-nav-links" class="flex justify-between overflow-x-auto">
+                    <a href="#sekilas" class="sub-nav-link flex-1 text-center whitespace-nowrap py-4 px-2 border-b-2 border-transparent text-slate-600 hover:text-teal-600 font-semibold transition-all duration-300">Sekilas Perusahaan</a>
+                    <a href="#sejarah" class="sub-nav-link flex-1 text-center whitespace-nowrap py-4 px-2 border-b-2 border-transparent text-slate-600 hover:text-teal-600 font-semibold transition-all duration-300">Sejarah & Proyek</a>
+                    <a href="#visi-misi" class="sub-nav-link flex-1 text-center whitespace-nowrap py-4 px-2 border-b-2 border-transparent text-slate-600 hover:text-teal-600 font-semibold transition-all duration-300">Visi & Misi</a>
+                    <a href="#aset" class="sub-nav-link flex-1 text-center whitespace-nowrap py-4 px-2 border-b-2 border-transparent text-slate-600 hover:text-teal-600 font-semibold transition-all duration-300">Aset</a>
+                    <a href="#personel" class="sub-nav-link flex-1 text-center whitespace-nowrap py-4 px-2 border-b-2 border-transparent text-slate-600 hover:text-teal-600 font-semibold transition-all duration-300">Key Personel</a>
                 </div>
             </div>
         </div>
@@ -325,7 +358,6 @@
                 });
             });
 
-
             // --- Sub-Nav ScrollSpy Logic ---
             const subNav = document.getElementById('sub-nav');
             const subNavLinks = document.querySelectorAll('.sub-nav-link');
@@ -348,6 +380,7 @@
                     });
                 };
                 window.addEventListener('scroll', onScroll);
+                onScroll(); // Initial check
             }
 
             // --- Timeline Logic ---
@@ -464,4 +497,4 @@
     </script>
 
 </body>
-</html>
+</ht

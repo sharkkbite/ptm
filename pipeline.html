@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Ganti Judul Sesuai Layanan -->
+    <title>Pipeline - Layanan Kami</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- AOS (Animate on Scroll) Library for animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Leaflet.js for Interactive Map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    
+    <!-- Custom Stylesheet -->
+    <link href="style.css" rel="stylesheet">
+
+</head>
+<body class="bg-slate-50 text-slate-700">
+
+    <!-- =========== Header / Navbar =========== -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex-shrink-0 flex items-center space-x-3 z-50">
+                <img src="assets/PTMpng.png" alt="Logo Perusahaan" class="h-10 w-10 rounded-full">
+                <span id="company-name-text" class="text-base md:text-xl font-bold text-white transition-colors duration-300">PT. PUTRA TUNGGAL MANDIRITAMA</span>
+            </a>
+            <div class="hidden lg:flex items-center ml-auto">
+                <div class="flex items-center space-x-8">
+                    <a href="tentang-kami.html" class="desktop-nav-link text-white hover:text-teal-400 font-medium transition-colors duration-300">Tentang Kami</a>
+                    <div class="relative group px-2 py-4">
+                        <button class="desktop-nav-link text-teal-400 font-semibold transition-colors duration-300 flex items-center">
+                            Layanan
+                        </button>
+                        <div class="absolute hidden group-hover:block bg-white shadow-lg rounded-md mt-0 pt-4 w-64 py-2 z-50 top-full left-1/2 -translate-x-1/2">
+                            <a href="offshore.html" class="block px-4 py-2 text-slate-700 hover:bg-teal-50">Offshore Plant Construction</a>
+                            <a href="industrial-gas.html" class="block px-4 py-2 text-slate-700 hover:bg-teal-50">Industrial Gas Plant</a>
+                            <a href="oil-gas.html" class="block px-4 py-2 text-slate-700 hover:bg-teal-50">Oil & Gas</a>
+                            <a href="pipeline.html" class="block px-4 py-2 text-slate-700 hover:bg-teal-50">Pipeline</a>
+                            <a href="our-facility.html" class="block px-4 py-2 text-slate-700 hover:bg-teal-50">Our Facility</a>
+                        </div>
+                    </div>
+                    <a href="index.html#news" class="desktop-nav-link text-white hover:text-teal-400 font-medium transition-colors duration-300">Berita</a>
+                    <a href="index.html#contact" class="desktop-nav-link text-white hover:text-teal-400 font-medium transition-colors duration-300">Kontak</a>
+                </div>
+            </div>
+            <div class="lg:hidden z-50 ml-auto">
+                <button id="mobile-menu-button" class="text-white focus:outline-none transition-colors duration-300">
+                    <svg id="menu-open-icon" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    <svg id="menu-close-icon" class="w-7 h-7 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+        </nav>
+        
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-menu" class="lg:hidden bg-white shadow-xl transition-all duration-300 max-h-0 opacity-0 overflow-hidden">
+             <div class="px-4 py-6 space-y-4">
+                <a href="tentang-kami.html" class="block text-slate-700 hover:text-teal-600 font-medium">Tentang Kami</a>
+                <div>
+                    <button id="mobile-services-toggle" class="flex items-center justify-between w-full text-slate-700 hover:text-teal-600 font-medium">
+                        <span>Layanan</span>
+                        <svg id="mobile-arrow" class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div id="mobile-services-menu" class="hidden mt-2 space-y-2 pl-4">
+                        <a href="offshore.html" class="block py-1 text-slate-600 hover:text-teal-600">Offshore Plant</a>
+                        <a href="industrial-gas.html" class="block py-1 text-slate-600 hover:text-teal-600">Industrial Gas Plant</a>
+                        <a href="oil-gas.html" class="block py-1 text-slate-600 hover:text-teal-600">Oil & Gas</a>
+                        <a href="pipeline.html" class="block py-1 text-slate-600 hover:text-teal-600">Pipeline</a>
+                        <a href="our-facility.html" class="block py-1 text-slate-600 hover:text-teal-600">Our Facility</a>
+                    </div>
+                </div>
+                <a href="index.html#news" class="block text-slate-700 hover:text-teal-600 font-medium">Berita</a>
+                <a href="index.html#contact" class="block text-slate-700 hover:text-teal-600 font-medium">Kontak</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- =========== Hero Section for Service Page =========== -->
+        <section class="relative bg-slate-800 pt-40 pb-20 md:pt-48 md:pb-28">
+            <div class="absolute inset-0">
+                <img src="assets/BCore/pipeline/WhatsApp Image 2025-07-14 at 16.15.36_d2284ea2.jpg" 
+                     alt="Layanan Latar" class="w-full h-full object-cover opacity-20">
+            </div>
+            <div class="relative container mx-auto px-6 text-center text-white" data-aos="fade-up">
+                <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight">Pipeline</h1>
+                <p class="mt-4 text-lg text-slate-300 max-w-3xl mx-auto">Solusi komprehensif untuk konstruksi anjungan lepas pantai, dari pengerukan hingga instalasi struktur dan perpipaan.</p>
+            </div>
+        </section>
+
+        <section class="py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="max-w-5xl mx-auto">
+                    <div class="grid lg:grid-cols-2 gap-16 items-center">
+                        <div id="service-slideshow" class="relative w-full aspect-[4/5] rounded-xl shadow-2xl overflow-hidden" data-aos="fade-right">
+                            <!-- Image Slides -->
+                            <div class="slideshow-container">
+                                <img src="assets/BCore/pipeline/IMG_20210502_085822.jpg" alt="Detail Layanan 1" class="slide absolute w-full h-full object-cover transition-opacity duration-700 ease-in-out opacity-100">
+                                <img src="assets/BCore/pipeline/excell.jpg" alt="Detail Layanan 2" class="slide absolute w-full h-full object-cover transition-opacity duration-700 ease-in-out opacity-0">
+                                <img src="assets/BCore/pipeline/p1.jpg" alt="Detail Layanan 3" class="slide absolute w-full h-full object-cover transition-opacity duration-700 ease-in-out opacity-0">
+                                <img src="assets/BCore/pipeline/pline1.jfif" alt="Detail Layanan 4" class="slide absolute w-full h-full object-cover transition-opacity duration-700 ease-in-out opacity-0">
+                                <img src="assets/BCore/pipeline/pline2.jfif" alt="Detail Layanan 5" class="slide absolute w-full h-full object-cover transition-opacity duration-700 ease-in-out opacity-0">
+                            </div>
+                            <!-- Navigation Buttons -->
+                            <button id="prev-slide" class="absolute left-3 top-1/2 -translate-y-1/2 bg-black bg-opacity-30 text-white p-2 rounded-full hover:bg-opacity-50 transition-colors">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                            </button>
+                            <button id="next-slide" class="absolute right-3 top-1/2 -translate-y-1/2 bg-black bg-opacity-30 text-white p-2 rounded-full hover:bg-opacity-50 transition-colors">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                            </button>
+                            <!-- Dot Indicators -->
+                            <div id="slide-dots" class="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
+                                <!-- Dots will be generated by JS -->
+                            </div>
+                        </div>
+                        <div class="prose lg:prose-lg max-w-none text-slate-600" data-aos="fade-left" data-aos-delay="100">
+                             <h2 class="text-3xl font-extrabold text-slate-800 tracking-tight">Detail Layanan</h2>
+                            <p>Kami menyediakan layanan konstruksi lepas pantai yang mencakup seluruh siklus proyek. Dengan tim ahli dan peralatan canggih, kami memastikan setiap tahap proyek, mulai dari pekerjaan bawah air hingga instalasi di atas platform, berjalan dengan efisien dan sesuai standar keselamatan tertinggi.</p>
+                            
+                            <h3 class="text-slate-800 mt-8">Lingkup Pekerjaan:</h3>
+                            <ul>
+                                <li><strong>Trenching & Dredging:</strong> Persiapan dasar laut untuk pemasangan pipa dan struktur.</li>
+                                <li><strong>Pipelaying:</strong> Pemasangan pipa bawah laut dengan presisi tinggi menggunakan teknologi modern.</li>
+                                <li><strong>Installation Structure:</strong> Perakitan dan instalasi struktur jacket, topside, dan modul lainnya.</li>
+                                <li><strong>Piping Hook-up:</strong> Penyambungan sistem perpipaan di anjungan untuk memastikan aliran yang optimal dan aman.</li>
+                            </ul>
+                            <p>Komitmen kami adalah memberikan hasil yang andal dan tahan lama, mendukung operasi klien kami di lingkungan laut yang menantang.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========== Project Track Record Map Section =========== -->
+        <section class="py-24 bg-slate-100">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h2 class="text-3xl font-extrabold text-slate-800 tracking-tight">Lokasi Proyek Kami</h2>
+                    <p class="mt-2 text-slate-600 max-w-2xl mx-auto">Visualisasi portofolio proyek kami di bidang Offshore Plant Construction.</p>
+                </div>
+                <div id="project-map" class="w-full h-[600px] rounded-xl shadow-2xl z-10" data-aos="fade-up" data-aos-delay="100"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400">
+        <!-- ... (Konten footer tetap sama) ... -->
+    </footer>
+
+    <!-- AOS (Animate on Scroll) Library Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Script untuk fungsionalitas kustom -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+             AOS.init({
+                duration: 700,
+                once: true,
+            });
+            
+            // --- Header Scroll Logic ---
+            const header = document.getElementById('header');
+            const companyNameText = document.getElementById('company-name-text');
+            const desktopNavLinks = document.querySelectorAll('.desktop-nav-link');
+            const mobileMenuBtn = document.getElementById('mobile-menu-button');
+
+            window.addEventListener('scroll', () => {
+                const isScrolled = window.scrollY > 50;
+                header.classList.toggle('header-scrolled', isScrolled);
+                if (companyNameText) {
+                    companyNameText.classList.toggle('text-white', !isScrolled);
+                    companyNameText.classList.toggle('text-slate-900', isScrolled);
+                }
+                if (mobileMenuBtn) {
+                    mobileMenuBtn.classList.toggle('text-white', !isScrolled);
+                    mobileMenuBtn.classList.toggle('text-slate-800', isScrolled);
+                }
+
+                desktopNavLinks.forEach(link => {
+                    const isActive = link.classList.contains('text-teal-400');
+                    if (!isActive) {
+                        link.classList.toggle('text-white', !isScrolled);
+                        link.classList.toggle('text-slate-600', isScrolled);
+                        link.classList.toggle('hover:text-teal-400', !isScrolled);
+                        link.classList.toggle('hover:text-teal-600', isScrolled);
+                    }
+                });
+            });
+
+
+            // --- Mobile Menu Logic ---
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const openIcon = document.getElementById('menu-open-icon');
+            const closeIcon = document.getElementById('menu-close-icon');
+            const servicesToggle = document.getElementById('mobile-services-toggle');
+            const servicesMenu = document.getElementById('mobile-services-menu');
+            const servicesArrow = document.getElementById('mobile-arrow');
+
+            if (mobileMenuButton) {
+                mobileMenuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('max-h-0');
+                    mobileMenu.classList.toggle('opacity-0');
+                    mobileMenu.classList.toggle('py-6');
+                    openIcon.classList.toggle('hidden');
+                    closeIcon.classList.toggle('hidden');
+                });
+            }
+
+            if(servicesToggle) {
+                servicesToggle.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    servicesMenu.classList.toggle('hidden');
+                    if(servicesArrow) servicesArrow.classList.toggle('rotate-180');
+                });
+            }
+
+            // --- Service Page Slideshow Logic ---
+            const slideshowContainer = document.getElementById('service-slideshow');
+            if (slideshowContainer) {
+                const slides = slideshowContainer.querySelectorAll('.slide');
+                const dotsContainer = slideshowContainer.querySelector('#slide-dots');
+                const prevButton = slideshowContainer.querySelector('#prev-slide');
+                const nextButton = slideshowContainer.querySelector('#next-slide');
+                let currentSlide = 0;
+
+                function showSlide(index) {
+                    slides.forEach((slide, i) => {
+                        slide.classList.toggle('opacity-100', i === index);
+                        slide.classList.toggle('opacity-0', i !== index);
+                    });
+                    const dots = dotsContainer.querySelectorAll('button');
+                    dots.forEach((dot, i) => {
+                        dot.classList.toggle('bg-white', i === index);
+                        dot.classList.toggle('bg-white/50', i !== index);
+                    });
+                    currentSlide = index;
+                }
+
+                function nextSlide() {
+                    const newIndex = (currentSlide + 1) % slides.length;
+                    showSlide(newIndex);
+                }
+
+                function prevSlide() {
+                    const newIndex = (currentSlide - 1 + slides.length) % slides.length;
+                    showSlide(newIndex);
+                }
+
+                slides.forEach((_, i) => {
+                    const dot = document.createElement('button');
+                    dot.classList.add('w-2', 'h-2', 'rounded-full', 'transition-colors');
+                    dot.addEventListener('click', () => showSlide(i));
+                    dotsContainer.appendChild(dot);
+                });
+
+                showSlide(0);
+                prevButton.addEventListener('click', prevSlide);
+                nextButton.addEventListener('click', nextSlide);
+                setInterval(nextSlide, 5000);
+            }
+
+            // --- Interactive Map Logic ---
+            const mapContainer = document.getElementById('project-map');
+            if (mapContainer) {
+                const map = L.map('project-map').setView([-0.6, 117.0], 8);
+
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    maxZoom: 19,
+                    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                }).addTo(map);
+
+                const greenIcon = new L.Icon({
+                    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+                    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+                    iconSize: [25, 41],
+                    iconAnchor: [12, 41],
+                    popupAnchor: [1, -34],
+                    shadowSize: [41, 41]
+                });
+
+                const blueIcon = new L.Icon({
+                    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-blue.png',
+                    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+                    iconSize: [25, 41],
+                    iconAnchor: [12, 41],
+                    popupAnchor: [1, -34],
+                    shadowSize: [41, 41]
+                });
+
+                const projects = [
+                    { name: 'Instalasi Platform Handil', coords: [-0.85, 117.29], status: 'completed' },
+                    { name: 'Pemasangan Pipa Bawah Laut', coords: [-1.0, 117.5], status: 'completed' },
+                    { name: 'Workshop & Jetty', coords: [-0.9, 117.15], status: 'completed' },
+                    { name: 'Maintenance Platform Sisi Nubi', coords: [-1.15, 117.45], status: 'ongoing' }
+                ];
+
+                projects.forEach(project => {
+                    const icon = project.status === 'completed' ? greenIcon : blueIcon;
+                    L.marker(project.coords, {icon: icon}).addTo(map)
+                        .bindPopup(`<b>${project.name}</b><br>Status: ${project.status}`);
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>
